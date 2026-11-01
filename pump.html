@@ -1,0 +1,5 @@
+<!doctype html><meta charset="utf-8"><title>pump</title><body>pump<script>
+(async()=>{const q=new URLSearchParams(location.search);const files=(q.get('f')||'').split(',').filter(Boolean);
+for(const f of files){try{const r=await fetch(f);const b=await r.blob();window.opener&&window.opener.postMessage({k:f,b},'*');document.body.append(' '+f+':'+b.size)}catch(e){document.body.append(' ERR '+f)}}
+setTimeout(()=>window.close(),3000)})();
+</script>
